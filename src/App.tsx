@@ -140,14 +140,10 @@ function TripCard({ trip }: { trip: LocalTrip }) {
   );
 }
 
-function EmptyTrips({ onCreate }: { onCreate: () => void }) {
+function EmptyTrips() {
   return (
-    <section className="empty-state">
-      <div className="empty-state__road" aria-hidden="true"><i /><i /><i /></div>
-      <span className="eyebrow">No trips yet</span>
-      <h2>The road is calling.</h2>
-      <p>Start a trip, pick your regions, and see how many plates you can spot along the way.</p>
-      <button className="button button--primary" onClick={onCreate}><PlusIcon /> Start a trip</button>
+    <section className="trip-list" aria-label="Trips">
+      <p className="empty-list-message">No trips yet.</p>
     </section>
   );
 }
@@ -287,14 +283,12 @@ function TripsPage() {
       <main className="trips-page">
         <div className="page-title-row">
           <div><h1>Trips</h1></div>
-          {trips.length > 0 && (
-            <button className="button button--primary button--small" onClick={() => setCreating(true)}>
-              <PlusIcon /> NEW TRIP
-            </button>
-          )}
+          <button className="button button--primary button--small" onClick={() => setCreating(true)}>
+            <PlusIcon /> NEW TRIP
+          </button>
         </div>
 
-        {trips.length === 0 ? <EmptyTrips onCreate={() => setCreating(true)} /> : (
+        {trips.length === 0 ? <EmptyTrips /> : (
           <>
             <section className="trip-list" aria-labelledby="active-trips-title">
               {active.length > 0
