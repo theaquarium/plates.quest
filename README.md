@@ -2,6 +2,8 @@
 
 A local-first, shareable license plate checklist for road trips. The app is a React PWA served by a Cloudflare Worker, with shared trip state stored in D1.
 
+Live at [plates.quest](https://plates.quest).
+
 ## What it does
 
 - Creates trips with US, Canadian, Mexican, and European plate lists.
@@ -35,4 +37,4 @@ The production D1 database and Cloudflare account are configured in `wrangler.js
 npm run deploy
 ```
 
-To use the `plates.quest` domain, delegate its DNS to Cloudflare and attach it as a custom domain for the deployed Worker.
+Production deploys are served from the Worker custom domain at `plates.quest`.
